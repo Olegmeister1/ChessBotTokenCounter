@@ -5,7 +5,7 @@
 * Alternatively you can clone this repository and use it directly (note that it wasnt tested extensively)
 * It quickly shows changes in the token counter of MyBot.cs or any C# file you like
 
-  ![image](https://github.com/Olegmeister1/ChessBotTokenCounter/assets/140604493/cf60d97b-de42-429f-b171-9aa2efa16be7)
+  ![image](https://github.com/Olegmeister1/ChessBotTokenCounter/assets/140604493/18a88685-2b29-4f90-ac5c-ce14abcc5060)
 
 ## Intended workflow
 * Disable automatic saving in your IDE
