@@ -1,0 +1,87 @@
+﻿<Window x:Class="ChessBotTokenCounter.MVVM.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChessBotTokenCounter.MVVM.View"
+        xmlns:helper="clr-namespace:ChessBotTokenCounter.Helper"
+        mc:Ignorable="d"
+        Title=""
+        Height="150" Width="250"
+        WindowStyle="None" Topmost="True"
+        ShowInTaskbar="False"
+        Background="#30303D" AllowsTransparency="True"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Window.Resources>
+        <helper:ValueColourConverter x:Key="ValueColourConverter" />
+    </Window.Resources>
+    
+    <Border BorderThickness="1"
+            BorderBrush="BLack">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Title Bar Button -->
+            <Button x:Name="btnClose" Content="❌"
+                    BorderBrush="transparent" Background="transparent"
+                    Click="btnClose_Click"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource TitelBarButtonTheme}"/>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Previous Token Counter -->
+                    <StackPanel VerticalAlignment="Bottom">
+                        <Label Content="Previous:"
+                               Foreground="#8f9faf"
+                               HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="40"  Text="{Binding PreviousToken}"
+                                   Foreground="#FF3B3A42"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom"/>
+                    </StackPanel>
+
+                    <!-- Current Token Counter -->
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Bottom">
+                    
+                        <Label Content="Current:"
+                               Foreground="#8f9faf"
+                               HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="40" Text="{Binding CurrentToken}"
+                                   Foreground="{Binding CurrentToken, 
+                                   Converter={StaticResource ValueColourConverter}}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Change File Source Button -->
+                <Button Grid.Row="1" 
+                        Content="Change Source"
+                        Width="100" Height="30" Margin="7"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="#FF3B3A42"
+                        BorderBrush="Black"
+                        Command="{Binding ChangeFilePathCommand}"/>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
